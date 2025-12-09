@@ -17,7 +17,8 @@
     <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Functional Diversity</a>
+            <!-- Logo/marca clickeable que lleva a la calculadora -->
+            <a class="navbar-brand" href="#" onclick="goToSection('calculator'); event.preventDefault();">Functional Diversity</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,7 +44,41 @@
         <section id="calculator" class="content-section active">
             <h2 class="text-center mb-4">Calculator</h2>
             <div class="calculator-container">
-                <!-- El contenido de la calculadora se agregará aquí -->
+                <div class="calculator">
+                    <!-- Display de la calculadora: muestra el número actual o resultado -->
+                    <div class="calculator-display" id="display">0</div>
+                    
+                    <!-- Grid de botones de la calculadora organizado en 4 columnas -->
+                    <div class="calculator-buttons">
+                        <!-- Fila 1: Botones de función y operadores básicos -->
+                        <button class="btn-calc btn-function" onclick="clearDisplay()">C</button> <!-- Clear: limpia todo -->
+                        <button class="btn-calc btn-function" onclick="deleteDigit()">DEL</button> <!-- Delete: borra último dígito -->
+                        <button class="btn-calc btn-operator" onclick="appendOperator('/')">/</button> <!-- División -->
+                        <button class="btn-calc btn-operator" onclick="appendOperator('*')">×</button> <!-- Multiplicación -->
+                        
+                        <!-- Fila 2: Números 7, 8, 9 y resta -->
+                        <button class="btn-calc btn-number" onclick="appendNumber('7')">7</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('8')">8</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('9')">9</button>
+                        <button class="btn-calc btn-operator" onclick="appendOperator('-')">-</button> <!-- Resta -->
+                        
+                        <!-- Fila 3: Números 4, 5, 6 y suma -->
+                        <button class="btn-calc btn-number" onclick="appendNumber('4')">4</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('5')">5</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('6')">6</button>
+                        <button class="btn-calc btn-operator" onclick="appendOperator('+')">+</button> <!-- Suma -->
+                        
+                        <!-- Fila 4: Números 1, 2, 3 y botón igual (ocupa 2 filas verticalmente) -->
+                        <button class="btn-calc btn-number" onclick="appendNumber('1')">1</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('2')">2</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('3')">3</button>
+                        <button class="btn-calc btn-equals" onclick="calculate()" style="grid-row: span 2;">=</button> <!-- Igual: calcula resultado -->
+                        
+                        <!-- Fila 5: Número 0 (ocupa 2 columnas horizontalmente) y punto decimal -->
+                        <button class="btn-calc btn-number" onclick="appendNumber('0')" style="grid-column: span 2;">0</button>
+                        <button class="btn-calc btn-number" onclick="appendNumber('.')">.</button> <!-- Punto decimal -->
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -51,7 +86,20 @@
         <section id="tasklist" class="content-section">
             <h2 class="text-center mb-4">Task List</h2>
             <div class="tasklist-container">
-                <!-- El contenido de la lista de tareas se agregará aquí -->
+                <!-- Grupo de input para agregar nuevas tareas -->
+                <div class="task-input-group mb-4">
+                    <!-- Campo de texto para escribir la tarea -->
+                    <input type="text" id="taskInput" class="form-control mb-2" placeholder="Enter a new task...">
+                    <!-- Campo de fecha para la tarea -->
+                    <input type="date" id="taskDate" class="form-control mb-2" placeholder="Select due date (optional)">
+                    <!-- Botón para agregar la tarea (también funciona presionando Enter) -->
+                    <button onclick="addTask()" class="btn btn-primary">Add Task</button>
+                </div>
+                <!-- Lista donde se mostrarán todas las tareas -->
+                <!-- Las tareas se crean dinámicamente con JavaScript -->
+                <ul id="taskList" class="list-group">
+                    <!-- Las tareas se agregarán aquí dinámicamente -->
+                </ul>
             </div>
         </section>
 
@@ -59,7 +107,12 @@
         <section id="gallery" class="content-section">
             <h2 class="text-center mb-4">Image Gallery</h2>
             <div class="gallery-container">
-                <!-- El contenido de la galería se agregará aquí -->
+                <!-- Grid responsive de Bootstrap para mostrar las imágenes -->
+                <!-- Las imágenes se organizan en 3 columnas en pantallas medianas/grandes -->
+                <!-- En móviles se muestran en 2 columnas o 1 según el tamaño -->
+                <div class="row" id="galleryGrid">
+                    <!-- Las imágenes se agregarán aquí dinámicamente -->
+                </div>
             </div>
         </section>
     </main>
