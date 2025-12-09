@@ -1,0 +1,319 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background: linear-gradient(135deg, #09664a 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Estilos de la Barra de Navegación */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav {
+    gap: 1rem;
+}
+
+.nav-link {
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Secciones de Contenido */
+.content-section {
+    display: none;
+    background-color: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+.content-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Encabezados de Sección */
+h2 {
+    color: #667eea;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* Contenedor de Calculadora */
+.calculator-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Contenedor de Lista de Tareas */
+.tasklist-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Contenedor de Galería */
+.gallery-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Pie de Página */
+footer {
+    margin-top: auto;
+}
+
+/* Efectos Hover */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Diseño Responsive */
+
+/* Dispositivos Extra Pequeños (Teléfonos, 320px - 575px) */
+@media (max-width: 575px) {
+    body {
+        font-size: 14px;
+    }
+
+    .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .content-section {
+        padding: 1rem;
+        border-radius: 10px;
+        margin: 0 0.5rem;
+    }
+    
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        gap: 0.25rem;
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 0.4rem 1rem !important;
+        font-size: 0.9rem;
+    }
+    
+    h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .calculator-container,
+    .tasklist-container,
+    .gallery-container {
+        width: 100%;
+        padding: 0;
+    }
+
+    footer {
+        font-size: 0.85rem;
+        padding: 0.75rem 0;
+    }
+}
+
+/* Dispositivos Pequeños (Teléfonos Horizontales, Tablets, 576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+    .content-section {
+        padding: 1.5rem;
+        margin: 0 1rem;
+    }
+    
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1.2rem !important;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .calculator-container {
+        max-width: 350px;
+    }
+
+    .tasklist-container {
+        max-width: 500px;
+    }
+
+    .gallery-container {
+        max-width: 550px;
+    }
+}
+
+/* Dispositivos Medianos (Tablets, 768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .content-section {
+        padding: 2rem;
+    }
+    
+    .navbar-nav {
+        gap: 0.75rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1.5rem !important;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .calculator-container {
+        max-width: 380px;
+    }
+
+    .tasklist-container {
+        max-width: 550px;
+    }
+
+    .gallery-container {
+        max-width: 700px;
+    }
+}
+
+/* Dispositivos Grandes (Escritorios, 992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .content-section {
+        padding: 2.5rem;
+    }
+
+    .navbar-nav {
+        gap: 1rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .gallery-container {
+        max-width: 850px;
+    }
+}
+
+/* Dispositivos Extra Grandes (Escritorios Grandes, 1200px en adelante) */
+@media (min-width: 1200px) {
+    .content-section {
+        padding: 3rem;
+        max-width: 1140px;
+        margin: 0 auto;
+    }
+
+    .navbar-nav {
+        gap: 1.5rem;
+    }
+
+    .nav-link {
+        padding: 0.6rem 1.8rem !important;
+        font-size: 1.05rem;
+    }
+
+    h2 {
+        font-size: 2.25rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .calculator-container {
+        max-width: 450px;
+    }
+
+    .tasklist-container {
+        max-width: 650px;
+    }
+
+    .gallery-container {
+        max-width: 1000px;
+    }
+}
+
+/* Orientación Horizontal para Dispositivos Móviles */
+@media (max-height: 600px) and (orientation: landscape) {
+    .content-section {
+        padding: 1rem;
+        margin: 0.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .navbar {
+        padding: 0.25rem 0;
+    }
+
+    footer {
+        padding: 0.5rem 0;
+    }
+}
+
+/* Pantallas de Alta Resolución */
+@media (min-width: 1400px) {
+    .content-section {
+        max-width: 1320px;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .gallery-container {
+        max-width: 1100px;
+    }
+}
