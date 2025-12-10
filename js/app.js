@@ -512,42 +512,51 @@ function renderTasks() {
  */
 function initGallery() {
     // Array de imágenes de ejemplo usando Unsplash API
-    // Las imágenes están optimizadas con parámetros de tamaño (w=400, h=300)
+    // Usamos dos tamaños: thumbnail para la galería y full para el modal
     const images = [
         {
             url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=900&fit=crop',
             title: 'Mountain Landscape'
         },
         {
             url: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=900&fit=crop',
             title: 'Nature Scene'
         },
         {
             url: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=900&fit=crop',
             title: 'Foggy Forest'
         },
         {
             url: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&h=900&fit=crop',
             title: 'Sunset Road'
         },
         {
             url: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=1200&h=900&fit=crop',
             title: 'Lake View'
         },
         {
             url: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&h=900&fit=crop',
             title: 'Ocean Waves'
         },
         {
             url: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=900&fit=crop',
             title: 'Green Forest'
         },
         {
             url: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1426604966848-d7adac402bff?w=1200&h=900&fit=crop',
             title: 'Mountain Peak'
         },
         {
             url: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop',
+            fullUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=900&fit=crop',
             title: 'Alpine Valley'
         }
     ];
@@ -579,6 +588,10 @@ function renderGallery(images) {
         img.alt = image.title;
         img.className = 'card-img-top';
         img.loading = 'lazy'; // Carga diferida para mejor rendimiento
+        img.style.cursor = 'pointer'; // Cambiar cursor a pointer para indicar que es clickeable
+        
+        // Agregar evento click para abrir modal con imagen de alta resolución
+        img.onclick = () => openModal(image.fullUrl, image.title);
         
         // Crear cuerpo de la tarjeta
         const cardBody = document.createElement('div');
@@ -596,4 +609,27 @@ function renderGallery(images) {
         col.appendChild(card);
         galleryGrid.appendChild(col);
     });
+}
+
+/**
+ * Abre el modal con la imagen ampliada
+ * @param {string} imageUrl - URL de la imagen a mostrar
+ * @param {string} imageTitle - Título de la imagen
+ */
+function openModal(imageUrl, imageTitle) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const caption = document.getElementById('modalCaption');
+    
+    modal.style.display = 'block';
+    modalImg.src = imageUrl;
+    caption.textContent = imageTitle;
+}
+
+/**
+ * Cierra el modal de imagen ampliada
+ */
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
 }
